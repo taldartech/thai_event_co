@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://thaievent.co/sitemap.xml
+Sitemap: https://thaievent.co/image-sitemap.xml
+
+# AI discovery
+# https://thaievent.co/llms.txt
+# https://thaievent.co/llms-full.txt

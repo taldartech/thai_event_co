@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://thaievent.co/</loc>
+    <image:image>
+      <image:loc>https://thaievent.co/assets/thai-event-collective-destination-wedding-banner.webp</image:loc>
+      <image:title>Thai Event Collective destination wedding banner</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://thaievent.co/</loc>
+    <image:image>
+      <image:loc>https://thaievent.co/assets/thai-event-collective-logo.webp</image:loc>
+      <image:title>Thai Event Collective logo</image:title>
+    </image:image>
+  </url>
+</urlset>
