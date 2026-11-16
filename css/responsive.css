@@ -1,0 +1,392 @@
+/* ==========================================================================
+   THAI DECOR COLLECTIVE – RESPONSIVE DESIGN
+   Tested for 1440px, 1280px, 1024px, 768px, 430px, 390px, 375px
+   ========================================================================== */
+
+/* --- Large Desktop (1440px and below) --- */
+@media (max-width: 1440px) {
+  :root {
+    --site-max-width: 1360px;
+  }
+}
+
+/* --- Standard Desktop / Small Laptop (1280px and below) --- */
+@media (max-width: 1280px) {
+  :root {
+    --site-max-width: 1200px;
+    --section-pad-y: clamp(4.5rem, 8vw, 7.5rem);
+  }
+
+  .footer-top {
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 3rem;
+  }
+}
+
+/* --- Tablet Landscape / Small Desktop (1024px and below) --- */
+@media (max-width: 1024px) {
+  :root {
+    --header-height: 76px;
+    --section-pad-y: 5rem;
+  }
+
+  /* Header adjustments */
+  .nav-desktop {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  /* Editorial Split */
+  .editorial-split {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  /* Service Card Editorial */
+  .service-card-editorial {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card-media {
+    min-height: 300px;
+  }
+
+  /* Approach Steps Horizontal to 3/2 or Scroll */
+  .approach-steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem 1.5rem;
+  }
+
+  .approach-steps::before {
+    display: none;
+  }
+
+  .approach-card {
+    padding-top: 2rem;
+    border-top: 1px solid var(--c-border-dark);
+  }
+
+  .step-node {
+    top: -9px;
+  }
+
+  /* Why Grid */
+  .why-grid {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  /* Testimonials */
+  .testimonial-track {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+/* --- Tablet Portrait (768px and below) --- */
+@media (max-width: 768px) {
+  :root {
+    --container-pad-x: 1.5rem;
+    --section-pad-y: 4.25rem;
+  }
+
+  /* Portfolio Grid */
+  .portfolio-grid-asym {
+    grid-template-columns: 1fr;
+  }
+
+  .col-featured,
+  .col-side,
+  .col-third {
+    grid-column: span 1;
+  }
+
+  .col-featured .work-card-media,
+  .col-side .work-card-media,
+  .col-third .work-card-media {
+    aspect-ratio: 16/10;
+  }
+
+  /* Approach Steps: Vertical timeline */
+  .approach-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  /* Gallery Grid */
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .g-span-4,
+  .g-span-5,
+  .g-span-6,
+  .g-span-7,
+  .g-span-8 {
+    grid-column: span 1;
+    aspect-ratio: 1/1;
+  }
+
+  /* Testimonials */
+  .testimonial-track {
+    grid-template-columns: 1fr;
+  }
+
+  .scroll-indicator-wrap {
+    display: none;
+  }
+
+  /* Footer */
+  .footer-top {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    display: none; /* Swipe / tap close on mobile */
+  }
+
+  .lightbox-close-btn {
+    top: -40px;
+    right: 5px;
+  }
+}
+
+/* --- Mobile Standard (480px, 430px, 390px, 375px) --- */
+@media (max-width: 480px) {
+  :root {
+    --container-pad-x: 1.15rem;
+    --section-pad-y: 3.5rem;
+    --header-height: 68px;
+  }
+
+  /* Header adjustments */
+  .brand-logo-img {
+    height: 36px;
+  }
+
+  .brand-logo-text {
+    font-size: 0.92rem;
+    letter-spacing: 0.03em;
+  }
+
+  .brand-logo-text span {
+    display: none;
+  }
+
+  /* Hero Section */
+  .hero-cinematic {
+    padding-bottom: 3.25rem;
+    min-height: 88vh;
+  }
+
+  .hero-brand-crest-wrap {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0.45rem 1rem 0.45rem 0.55rem;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-brand-crest {
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero-crest-img {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-crest-agency {
+    font-size: 0.85rem;
+  }
+
+  .hero-crest-tagline {
+    font-size: 0.62rem;
+    line-height: 1.25;
+  }
+
+  .hero-headline {
+    font-size: clamp(1.95rem, 8.2vw, 2.5rem);
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .hero-subtext {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn-bespoke {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.8rem;
+  }
+
+  /* General Button Styles on Mobile */
+  .btn-bespoke {
+    padding: 0.85rem 1.35rem;
+    font-size: 0.82rem;
+    box-sizing: border-box;
+  }
+
+  /* CTA Buttons */
+  .cta-buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.75rem;
+  }
+
+  .cta-buttons .btn-bespoke {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Mobile Nav Overlay */
+  .mobile-nav-overlay {
+    padding: 5.5rem var(--container-pad-x) 2.25rem;
+    gap: 1.5rem;
+  }
+
+  .mobile-nav-links {
+    gap: 0.85rem;
+  }
+
+  .mobile-nav-link {
+    font-size: clamp(1.5rem, 6.5vw, 2.25rem);
+  }
+
+  .mobile-nav-footer {
+    padding-top: 1.25rem;
+    gap: 0.75rem;
+  }
+
+  /* Cards & Forms */
+  .service-card-content {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .form-control-bespoke {
+    font-size: 16px !important; /* Prevents auto-zoom in iOS Safari */
+    padding: 0.85rem 1rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filter-bar {
+    gap: 0.5rem;
+  }
+
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.72rem;
+  }
+
+  /* Footer */
+  .footer-top {
+    gap: 2rem;
+  }
+
+  .footer-legal-links {
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+  }
+}
+
+/* --- Mobile Compact (375px, 360px, 320px and below) --- */
+@media (max-width: 380px) {
+  :root {
+    --container-pad-x: 0.95rem;
+    --section-pad-y: 3rem;
+  }
+
+  .hero-headline {
+    font-size: 1.85rem;
+  }
+
+  .hero-brand-crest-wrap {
+    padding: 0.4rem 0.75rem 0.4rem 0.45rem;
+    gap: 0.55rem;
+  }
+
+  .hero-brand-crest {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-crest-img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .hero-crest-agency {
+    font-size: 0.8rem;
+  }
+
+  .hero-crest-tagline {
+    font-size: 0.58rem;
+  }
+
+  .display-title,
+  .display-title-sm {
+    font-size: 1.65rem;
+  }
+}
+
+/* --- Mobile Landscape Accessibility --- */
+@media (max-height: 520px) and (orientation: landscape) {
+  .hero-cinematic {
+    min-height: auto;
+    padding-top: calc(var(--header-height) + 1.5rem);
+    padding-bottom: 2.5rem;
+  }
+
+  .mobile-nav-overlay {
+    padding: 4.5rem var(--container-pad-x) 2rem;
+  }
+
+  .mobile-nav-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+
+  .mobile-nav-link {
+    font-size: 1.15rem;
+  }
+}
+

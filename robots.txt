@@ -1,9 +1,30 @@
+# Robots.txt for Thai Event Collective (https://thaieventcollective.com)
 User-agent: *
 Allow: /
 
-Sitemap: https://thaievent.co/sitemap.xml
-Sitemap: https://thaievent.co/image-sitemap.xml
+# Generative Engine & Answer Engine Crawlers (AEO)
+User-agent: GPTBot
+Allow: /
 
-# AI discovery
-# https://thaievent.co/llms.txt
-# https://thaievent.co/llms-full.txt
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://thaieventcollective.com/sitemap.xml
