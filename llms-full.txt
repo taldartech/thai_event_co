@@ -1,121 +1,65 @@
-# Thai Event Collective — Full Site Map for AI Systems
+# Thai Event Collective — Full AI Knowledge Index
 
-> Complete index of major public pages for AI search platforms.
+> Complete structured index of all corporate event production pages and authoritative guides for AI systems.
 
 Website Name: Thai Event Collective
-Website Description: Wedding planner in Thailand for destination weddings, corporate events, MICE, booth building in Bangkok and event production.
+Website Description: Premier Corporate Event Management and Technical Event Production agency in Thailand specializing in Conferences, MICE Planning, Gala Dinners, Product Launches, and Concert-grade Staging across Bangkok and Phuket.
 Website Language: en
 Country: Thailand
-Primary Industry: Event management
-Business Type: Local business
-Primary Audience: Couples, corporate hosts, wedding planners, hotels and venues
-Last Updated: 2026-09-12
-Generated Date: 2026-09-12
+Primary Industry: Corporate Event Management & Technical Production
+Business Type: ProfessionalService
+Primary Audience: Corporate meeting planners, enterprise conference directors, MICE organizers, multinational brands, C-suite executives
+Last Updated: 2026-11-19
+Generated Date: 2026-11-19
 
-Website URL: https://thaievent.co/
-Total discovered public HTML pages: 15
+Website URL: https://thaieventcollective.com/
+Total discovered core pages: 12
 
-## About
+## About & Agency Overview
 
-- https://thaievent.co/ — Wedding Planner in Thailand
-- https://thaievent.co/media-kit.html — Media Kit
+- https://thaieventcollective.com/ — Corporate Events Thailand
+- https://thaieventcollective.com/about.html — About The Agency
 
-## Services
+## Corporate Capabilities & Services
 
-- https://thaievent.co/events/brand-activation.html — Brand Activation
-- https://thaievent.co/events/conference-management.html — Conference Management Thailand
-- https://thaievent.co/events/corporate-events.html — Corporate Events
-- https://thaievent.co/events/destination-weddings.html — Destination Weddings
-- https://thaievent.co/events/event-production.html — Event Production Thailand
-- https://thaievent.co/events/exhibition-management.html — Exhibition Management
-- https://thaievent.co/events/luxury-events.html — Luxury Events
-- https://thaievent.co/events/private-events.html — Private Events
-- https://thaievent.co/events/product-launch.html — Product Launch
+- https://thaieventcollective.com/services.html — Corporate Event Services
 
-## Blog
+## Strategic Operations & Locations
 
-_No pages in this section yet._
+- https://thaieventcollective.com/bangkok.html — Corporate Event Organizer Bangkok
+- https://thaieventcollective.com/phuket.html — Corporate Event Planner Phuket
 
-## Guides
+## Case Studies & Selected Productions
 
-_No pages in this section yet._
+- https://thaieventcollective.com/case-study.html — The Andaman Grand Gala Case Study
+- https://thaieventcollective.com/work.html — Selected Productions
 
-## Knowledge Base
+## Executive Guides & Intelligence
 
-_No pages in this section yet._
+- https://thaieventcollective.com/corporate-event-guide-thailand.html — The Executive Guide to Corporate Events in Thailand
+- https://thaieventcollective.com/faq.html — Corporate Event FAQ &amp; Intelligence
 
-## FAQs
+## Corporate RFP & Inquiries
 
-- https://thaievent.co/events/faq.html — FAQ
-- https://thaievent.co/faq.html — FAQ
+- https://thaieventcollective.com/contact.html — Corporate RFP &amp; Inquiries
 
-## Case Studies
+## Data Governance & Terms
 
-_No pages in this section yet._
+- https://thaieventcollective.com/privacy.html — Privacy Policy &amp; Corporate Data Governance
+- https://thaieventcollective.com/terms.html — Terms of Service &amp; Production MSA
 
-## Portfolio
+## Other Pages
 
-_No pages in this section yet._
+- https://thaieventcollective.com/ — Corporate Events Thailand
+- https://thaieventcollective.com/about.html — About The Agency
 
-## Gallery
-
-- https://thaievent.co/ — Wedding Planner in Thailand
-
-## Locations
-
-_No pages in this section yet._
-
-## Resources
-
-- https://thaievent.co/media-kit.html — Media Kit
-- https://thaievent.co/partners.html — Partners
-
-## Partners
-
-- https://thaievent.co/events/partners.html — Partners
-
-## Testimonials
-
-- https://thaievent.co/ — Wedding Planner in Thailand
-
-## Contact
-
-- https://thaievent.co/ — Wedding Planner in Thailand
-
-## Whitepapers
-
-_No pages in this section yet._
-
-## Downloads
-
-_No pages in this section yet._
-
-## Videos
-
-_No pages in this section yet._
-
-## Events
-
-_No pages in this section yet._
-
-## Products
-
-_No pages in this section yet._
-
-## Team Members
-
-_No pages in this section yet._
-
-## All Other Public Pages
-
-- https://thaievent.co/ — Wedding Planner in Thailand
 
 ## AI Summary
 
-Who we are: Thai Event Collective is a full-service Thai event planner. Sister firm Thai Decor Collective (https://thaidecor.co/) handles luxury décor and styling.
-What we do: Destination wedding planning, corporate events, MICE, conferences, exhibitions, brand activations and event production.
-Industries served: Weddings, hospitality, corporate celebrations, tourism and lifestyle events.
-Countries served: Thailand (Phuket, Bangkok and destination venues nationwide), supporting international clients hosting events in Thailand.
-Primary expertise: Destination wedding planning, corporate event management and on-site production.
-Target audience: Couples, corporate hosts, wedding planners, hotels, venues, photographers and tourism partners.
+Who we are: Thai Event Collective is Thailand's premier dedicated B2B corporate event management and technical production agency. Sister firm Thai Decor Collective (https://thaidecor.co/) manages high-end floral and aesthetic spatial décor.
+What we do: Enterprise conference management, MICE symposiums, high-profile gala dinners, product launches, certified technical production (L-Acoustics audio, fine-pitch LED video walls, certified truss rigging), and executive retreats.
+Industries served: Enterprise technology, finance, automotive, healthcare/pharma, international associations, and Fortune 500 corporations.
+Geographic focus: Thailand nationwide with specialized hubs in Bangkok (Sukhumvit / Bang Na) and Phuket (Old Town / resort sanctuaries).
+Primary differentiators: 100% corporate focus (zero consumer weddings), dual-power electrical redundancy, ISO simultaneous translation booths, international show-calling directors, and bilingual technical production crews.
+Sister brand: Thai Decor Collective (https://thaidecor.co/) for luxury aesthetic styling.
 

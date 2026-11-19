@@ -28,3 +28,4 @@ User-agent: Applebot-Extended
 Allow: /
 
 Sitemap: https://thaieventcollective.com/sitemap.xml
+Sitemap: https://thaieventcollective.com/image-sitemap.xml

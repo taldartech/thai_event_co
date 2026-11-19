@@ -1,13 +1,9 @@
 #!/usr/bin/env python3
 """
-Generate llms.txt and llms-full.txt for AI search discovery.
+Generate llms.txt and llms-full.txt for AI search discovery (ChatGPT, Perplexity, Claude, Google).
 
 Usage:
   python3 scripts/generate-llms.py
-
-This static-site equivalent of `php artisan seo:generate-llms`
-discovers public HTML pages, ignores non-public paths, and writes
-UTF-8 plain-text files to the website root.
 """
 
 from __future__ import annotations
@@ -15,17 +11,17 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import date
 from pathlib import Path
-from typing import Callable, Iterable, List, Optional
+from typing import Callable, Iterable, List
 import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_URL = "https://thaievent.co"
+BASE_URL = "https://thaieventcollective.com"
 SITE_LANGUAGE = "en"
 SITE_COUNTRY = "Thailand"
-PRIMARY_INDUSTRY = "Event management"
-BUSINESS_TYPE = "Local business"
-PRIMARY_AUDIENCE = "Couples, corporate hosts, wedding planners, hotels and venues"
+PRIMARY_INDUSTRY = "Corporate Event Management & Technical Production"
+BUSINESS_TYPE = "ProfessionalService"
+PRIMARY_AUDIENCE = "Corporate meeting planners, enterprise conference directors, MICE organizers, multinational brands, C-suite executives"
 MAX_PER_SECTION = 50
 
 IGNORE_DIR_NAMES = {
@@ -39,17 +35,21 @@ IGNORE_DIR_NAMES = {
     "scripts",
     "storage",
     "tests",
+    "scratch",
+    "events",  # Legacy redirect stubs
 }
 
 IGNORE_FILE_PATTERNS = (
     re.compile(r"(^|/)(login|register|admin|dashboard)(/|$|\.)", re.I),
     re.compile(r"(^|/)api(/|$)", re.I),
+    re.compile(r"404\.html$", re.I),
+    re.compile(r"(media-kit|partners)\.html$", re.I),  # Legacy stubs
 )
 
 
 @dataclass
 class Page:
-    path: str  # URL path starting with /
+    path: str
     title: str
     absolute_url: str
 
@@ -67,8 +67,6 @@ def html_to_url_path(rel: Path) -> str:
     parts = rel.as_posix()
     if parts == "index.html":
         return "/"
-    if parts.endswith("/index.html"):
-        return "/" + parts[: -len("index.html")]
     return "/" + parts
 
 
@@ -107,7 +105,6 @@ def discover_pages() -> List[Page]:
                 absolute_url=f"{BASE_URL}{url_path}" if url_path != "/" else f"{BASE_URL}/",
             )
         )
-    # Stable unique by path
     unique = {}
     for p in pages:
         unique[p.path] = p
@@ -120,91 +117,42 @@ def path_contains(page: Page, *needles: str) -> bool:
 
 
 def build_sections() -> List[Section]:
-    """
-    Extensible section registry.
-    Add future sections (whitepapers, downloads, videos, events, products,
-    testimonials, partners, team) by appending Section entries here — no
-    core generation logic changes required.
-    """
     return [
         Section(
             key="about",
-            heading="About",
-            matcher=lambda p: p.path in {"/", "/media-kit.html"},
+            heading="About & Agency Overview",
+            matcher=lambda p: p.path in {"/", "/about.html"},
         ),
         Section(
             key="services",
-            heading="Services",
-            matcher=lambda p: p.path.startswith("/events/") and not path_contains(p, "faq", "partners"),
-        ),
-        Section(
-            key="blog",
-            heading="Blog",
-            matcher=lambda p: path_contains(p, "/blog/", "/posts/"),
-        ),
-        Section(
-            key="guides",
-            heading="Guides",
-            matcher=lambda p: path_contains(p, "/guides/", "/guide/"),
-        ),
-        Section(
-            key="knowledge",
-            heading="Knowledge Base",
-            matcher=lambda p: path_contains(p, "/knowledge/", "/resources/"),
-        ),
-        Section(
-            key="faqs",
-            heading="FAQs",
-            matcher=lambda p: path_contains(p, "faq"),
-        ),
-        Section(
-            key="case_studies",
-            heading="Case Studies",
-            matcher=lambda p: path_contains(p, "/case-stud", "/case_stud"),
-        ),
-        Section(
-            key="portfolio",
-            heading="Portfolio",
-            matcher=lambda p: path_contains(p, "/portfolio"),
-        ),
-        Section(
-            key="gallery",
-            heading="Gallery",
-            matcher=lambda p: path_contains(p, "/gallery") or p.path in {"/"},
+            heading="Corporate Capabilities & Services",
+            matcher=lambda p: p.path in {"/services.html"},
         ),
         Section(
             key="locations",
-            heading="Locations",
-            matcher=lambda p: path_contains(p, "/location", "/bangkok", "/phuket"),
+            heading="Strategic Operations & Locations",
+            matcher=lambda p: p.path in {"/bangkok.html", "/phuket.html"},
         ),
         Section(
-            key="resources",
-            heading="Resources",
-            matcher=lambda p: p.path in {"/media-kit.html", "/partners.html"}
-            or path_contains(p, "/resources"),
+            key="work",
+            heading="Case Studies & Selected Productions",
+            matcher=lambda p: p.path in {"/work.html", "/case-study.html"},
         ),
         Section(
-            key="partners",
-            heading="Partners",
-            matcher=lambda p: path_contains(p, "partner"),
-        ),
-        Section(
-            key="testimonials",
-            heading="Testimonials",
-            matcher=lambda p: path_contains(p, "testimonial") or p.path in {"/"},
+            key="guides",
+            heading="Executive Guides & Intelligence",
+            matcher=lambda p: p.path in {"/corporate-event-guide-thailand.html", "/faq.html"},
         ),
         Section(
             key="contact",
-            heading="Contact",
-            matcher=lambda p: path_contains(p, "contact") or p.path in {"/"},
+            heading="Corporate RFP & Inquiries",
+            matcher=lambda p: p.path in {"/contact.html"},
         ),
-        # Future-ready placeholders (empty until pages exist)
-        Section(key="whitepapers", heading="Whitepapers", matcher=lambda p: path_contains(p, "whitepaper")),
-        Section(key="downloads", heading="Downloads", matcher=lambda p: path_contains(p, "download")),
-        Section(key="videos", heading="Videos", matcher=lambda p: path_contains(p, "/video")),
-        Section(key="events_calendar", heading="Events", matcher=lambda p: path_contains(p, "/event-calendar", "/upcoming-events")),
-        Section(key="products", heading="Products", matcher=lambda p: path_contains(p, "/product/") and "product-launch" not in p.path),
-        Section(key="team", heading="Team Members", matcher=lambda p: path_contains(p, "/team", "/about-team")),
+        Section(
+            key="legal",
+            heading="Data Governance & Terms",
+            matcher=lambda p: p.path in {"/privacy.html", "/terms.html"},
+        ),
     ]
 
 
@@ -218,7 +166,7 @@ def metadata_block(generated: str) -> str:
     return "\n".join(
         [
             "Website Name: Thai Event Collective",
-            "Website Description: Wedding planner in Thailand for destination weddings, corporate events, MICE, booth building in Bangkok and event production.",
+            "Website Description: Premier Corporate Event Management and Technical Event Production agency in Thailand specializing in Conferences, MICE Planning, Gala Dinners, Product Launches, and Concert-grade Staging across Bangkok and Phuket.",
             f"Website Language: {SITE_LANGUAGE}",
             f"Country: {SITE_COUNTRY}",
             f"Primary Industry: {PRIMARY_INDUSTRY}",
@@ -236,108 +184,83 @@ def ai_summary_block() -> str:
         [
             "## AI Summary",
             "",
-            "Who we are: Thai Event Collective is a full-service Thai event planner. Sister firm Thai Decor Collective (https://thaidecor.co/) handles luxury décor and styling.",
-            "What we do: Destination wedding planning, corporate events, MICE, conferences, exhibitions, brand activations and event production.",
-            "Industries served: Weddings, hospitality, corporate celebrations, tourism and lifestyle events.",
-            "Countries served: Thailand (Phuket, Bangkok and destination venues nationwide), supporting international clients hosting events in Thailand.",
-            "Primary expertise: Destination wedding planning, corporate event management and on-site production.",
-            "Target audience: Couples, corporate hosts, wedding planners, hotels, venues, photographers and tourism partners.",
+            "Who we are: Thai Event Collective is Thailand's premier dedicated B2B corporate event management and technical production agency. Sister firm Thai Decor Collective (https://thaidecor.co/) manages high-end floral and aesthetic spatial décor.",
+            "What we do: Enterprise conference management, MICE symposiums, high-profile gala dinners, product launches, certified technical production (L-Acoustics audio, fine-pitch LED video walls, certified truss rigging), and executive retreats.",
+            "Industries served: Enterprise technology, finance, automotive, healthcare/pharma, international associations, and Fortune 500 corporations.",
+            "Geographic focus: Thailand nationwide with specialized hubs in Bangkok (Sukhumvit / Bang Na) and Phuket (Old Town / resort sanctuaries).",
+            "Primary differentiators: 100% corporate focus (zero consumer weddings), dual-power electrical redundancy, ISO simultaneous translation booths, international show-calling directors, and bilingual technical production crews.",
+            "Sister brand: Thai Decor Collective (https://thaidecor.co/) for luxury aesthetic styling.",
             "",
         ]
     )
 
 
 def render_llms_txt(pages: List[Page], generated: str) -> str:
-    decor_services = sorted(
-        [p for p in pages if p.path.startswith("/events/") and "faq" not in p.path and "partners" not in p.path],
-        key=lambda p: p.path,
-    )[:MAX_PER_SECTION]
-
     lines = [
         "# Thai Event Collective",
         "",
-        "> Full-service Thai event planner and wedding planner in Thailand. Sister company: Thai Decor Collective (https://thaidecor.co/).",
+        "> Premier B2B Corporate Event Management & Technical Production Agency in Thailand. Specializing in Conferences, MICE Congresses, Gala Dinners, Product Launches, and Staging in Bangkok and Phuket.",
         "",
         metadata_block(generated).rstrip(),
         "",
-        "## About",
-        f"{BASE_URL}/",
-        f"{BASE_URL}/media-kit.html",
+        "## Core Capabilities",
+        f"- {BASE_URL}/services.html — Corporate Event Capabilities (Conferences, Galas, Technical Production, DMC)",
+        f"- {BASE_URL}/bangkok.html — Bangkok Corporate Event Management & Exhibition Staging",
+        f"- {BASE_URL}/phuket.html — Phuket Corporate Event Planner & Luxury Island Galas",
         "",
-        "## Services",
-        f"{BASE_URL}/#services",
+        "## Selected Productions & Proof",
+        f"- {BASE_URL}/work.html — Enterprise Production Archive",
+        f"- {BASE_URL}/case-study.html — The Andaman Grand Gala (450-Delegate Technology Gala)",
         "",
-        "### Thai Event Collective",
+        "## Executive Intelligence & Guides",
+        f"- {BASE_URL}/corporate-event-guide-thailand.html — The Executive Guide to Corporate Events in Thailand (Venues, TCEB Grants, Riders)",
+        f"- {BASE_URL}/faq.html — Corporate Event FAQ (Budgets, Lead Times, Regulations, Audio-Visual)",
+        "",
+        "## Agency & Contact",
+        f"- {BASE_URL}/about.html — Agency Overview, Leadership & Safety Rigor",
+        f"- {BASE_URL}/contact.html — Submit Corporate RFP / Book 30-Min Consultation",
+        "",
+        "## Sister Company",
+        "- Thai Decor Collective: https://thaidecor.co/ (Luxury Floral & Spatial Styling)",
+        "",
+        "## Contact Details",
+        "- Bangkok Hub: 4031 Sukhumvit Rd, Bang Na Nuea, Bang Na, Bangkok 10260, Thailand",
+        "- Phuket Hub: 10 Ratsada Rd, Amphoe Mueang Phuket, Phuket 83000, Thailand",
+        "- Phone: +66 81-149-0924",
+        "- Email: team@thaidecor.co",
+        "- Consultation Booking: https://calendly.com/team-thaidecor/30min",
+        "",
+        "## Sitemaps",
+        f"- Main Sitemap: {BASE_URL}/sitemap.xml",
+        f"- Image Sitemap: {BASE_URL}/image-sitemap.xml",
+        "",
+        "## Last Updated",
+        generated,
+        "",
+        ai_summary_block().rstrip(),
+        "",
     ]
-    for p in decor_services:
-        lines.append(f"- {p.absolute_url} — {p.title}")
-
-    lines.extend(
-        [
-            "",
-            "## Sister company",
-            "- Thai Decor Collective: https://thaidecor.co/",
-            "",
-            "## Main Topics Covered",
-            "- Destination wedding planning",
-            "- Corporate events and MICE",
-            "- Conference and exhibition management",
-            "- Event production and brand activation",
-            "",
-            "## Important Pages",
-            f"- Home: {BASE_URL}/",
-            f"- Partners: {BASE_URL}/partners.html",
-            f"- Media Kit: {BASE_URL}/media-kit.html",
-            f"- FAQ: {BASE_URL}/faq.html",
-            "- Sister (Decor): https://thaidecor.co/",
-            "",
-            "## Knowledge Resources",
-            f"{BASE_URL}/faq.html",
-            f"{BASE_URL}/media-kit.html",
-            f"{BASE_URL}/partners.html",
-            "",
-            "## Case Studies",
-            "Gallery and past-event showcases are featured on:",
-            f"{BASE_URL}/#gallery",
-            "",
-            "## Contact",
-            f"{BASE_URL}/#contact",
-            "Email: team@thaidecor.co",
-            "Phone: +66 81-149-0924",
-            "",
-            "## Sitemap",
-            f"{BASE_URL}/sitemap.xml",
-            f"{BASE_URL}/image-sitemap.xml",
-            "",
-            "## Last Updated",
-            generated,
-            "",
-            ai_summary_block().rstrip(),
-            "",
-        ]
-    )
     return "\n".join(lines) + "\n"
 
 
 def render_llms_full_txt(pages: List[Page], generated: str) -> str:
     sections = build_sections()
     lines = [
-        "# Thai Event Collective — Full Site Map for AI Systems",
+        "# Thai Event Collective — Full AI Knowledge Index",
         "",
-        "> Complete index of major public pages for AI search platforms.",
+        "> Complete structured index of all corporate event production pages and authoritative guides for AI systems.",
         "",
         metadata_block(generated).rstrip(),
         "",
         f"Website URL: {BASE_URL}/",
-        f"Total discovered public HTML pages: {len(pages)}",
+        f"Total discovered core pages: {len(pages)}",
         "",
     ]
 
     claimed: set[str] = set()
     for section in sections:
         matched = pages_for_section(section, pages)
-        # Gallery/testimonials/contact intentionally reuse homepages; allow overlap
-        allow_overlap = section.key in {"gallery", "testimonials", "contact", "about"}
+        allow_overlap = section.key in {"about"}
         if not allow_overlap:
             matched = [p for p in matched if p.path not in claimed]
             for p in matched:
@@ -353,15 +276,14 @@ def render_llms_full_txt(pages: List[Page], generated: str) -> str:
             lines.append(f"- {p.absolute_url} — {p.title}")
         lines.append("")
 
-    # Catch-all for any remaining public pages
     remaining = [p for p in sorted(pages, key=lambda x: x.path) if p.path not in claimed]
-    lines.append("## All Other Public Pages")
-    lines.append("")
     if remaining:
-        for p in remaining[:MAX_PER_SECTION]:
+        lines.append("## Other Pages")
+        lines.append("")
+        for p in remaining:
             lines.append(f"- {p.absolute_url} — {p.title}")
-    else:
-        lines.append("_All discovered pages are listed in the sections above._")
+        lines.append("")
+
     lines.extend(["", ai_summary_block().rstrip(), ""])
     return "\n".join(lines) + "\n"
 
