@@ -1,37 +1,41 @@
 /**
- * THAI DECOR COLLECTIVE – MAIN JAVASCRIPT
- * Smooth Scroll (Lenis), Header state, Lightbox Modal, and Form Handling
+ * THAI EVENT COLLECTIVE – MAIN JAVASCRIPT
+ * Natural responsive scrolling, Header state, Lightbox Modal, and Form Handling
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Initialize Lenis Smooth Scroll
-  let lenis;
-  if (typeof Lenis !== 'undefined') {
-    lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    // Sync Lenis with GSAP ScrollTrigger if present
-    if (typeof ScrollTrigger !== 'undefined') {
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
-      });
-      gsap.ticker.lagSmoothing(0);
-    }
+  // 1. Natural Browser Scroll & Smooth Anchor Navigation
+  if (typeof ScrollTrigger !== 'undefined') {
+    window.addEventListener('scroll', () => {
+      ScrollTrigger.update();
+    }, { passive: true });
   }
+
+  // Handle in-page anchor links with smooth scroll & arrival pulse
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const targetId = anchor.getAttribute('href');
+      if (targetId && targetId !== '#' && targetId.length > 1) {
+        const targetEl = document.querySelector(targetId);
+        if (targetEl) {
+          e.preventDefault();
+          const headerHeight = document.querySelector('.site-header')?.offsetHeight || 80;
+          const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - headerHeight - 16;
+          window.scrollTo({
+            top: Math.max(0, targetPosition),
+            behavior: 'smooth'
+          });
+          if (history.pushState) {
+            history.pushState(null, null, targetId);
+          }
+          // Trigger decent arrival animation on target section
+          targetEl.classList.remove('section-target-highlight');
+          void targetEl.offsetWidth; // trigger reflow
+          targetEl.classList.add('section-target-highlight');
+        }
+      }
+    });
+  });
 
   // 2. Header Scroll Effect
   const header = document.querySelector('.site-header');
