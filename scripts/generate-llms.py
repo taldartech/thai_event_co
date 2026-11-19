@@ -16,7 +16,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
-BASE_URL = "https://thaieventcollective.com"
+BASE_URL = "https://thaievent.co"
 SITE_LANGUAGE = "en"
 SITE_COUNTRY = "Thailand"
 PRIMARY_INDUSTRY = "Corporate Event Management & Technical Production"
@@ -204,7 +204,7 @@ def render_llms_txt(pages: List[Page], generated: str) -> str:
         metadata_block(generated).rstrip(),
         "",
         "## Core Capabilities",
-        f"- {BASE_URL}/services.html — Corporate Event Capabilities (Conferences, Galas, Technical Production, DMC)",
+        f"- {BASE_URL}/services.html — Corporate Event Capabilities (Conferences, Galas, Technical Event Production)",
         f"- {BASE_URL}/bangkok.html — Bangkok Corporate Event Management & Exhibition Staging",
         f"- {BASE_URL}/phuket.html — Phuket Corporate Event Planner & Luxury Island Galas",
         "",

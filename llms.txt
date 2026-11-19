@@ -13,21 +13,21 @@ Last Updated: 2026-11-19
 Generated Date: 2026-11-19
 
 ## Core Capabilities
-- https://thaieventcollective.com/services.html — Corporate Event Capabilities (Conferences, Galas, Technical Production, DMC)
-- https://thaieventcollective.com/bangkok.html — Bangkok Corporate Event Management & Exhibition Staging
-- https://thaieventcollective.com/phuket.html — Phuket Corporate Event Planner & Luxury Island Galas
+- https://thaievent.co/services.html — Corporate Event Capabilities (Conferences, Galas, Technical Event Production)
+- https://thaievent.co/bangkok.html — Bangkok Corporate Event Management & Exhibition Staging
+- https://thaievent.co/phuket.html — Phuket Corporate Event Planner & Luxury Island Galas
 
 ## Selected Productions & Proof
-- https://thaieventcollective.com/work.html — Enterprise Production Archive
-- https://thaieventcollective.com/case-study.html — The Andaman Grand Gala (450-Delegate Technology Gala)
+- https://thaievent.co/work.html — Enterprise Production Archive
+- https://thaievent.co/case-study.html — The Andaman Grand Gala (450-Delegate Technology Gala)
 
 ## Executive Intelligence & Guides
-- https://thaieventcollective.com/corporate-event-guide-thailand.html — The Executive Guide to Corporate Events in Thailand (Venues, TCEB Grants, Riders)
-- https://thaieventcollective.com/faq.html — Corporate Event FAQ (Budgets, Lead Times, Regulations, Audio-Visual)
+- https://thaievent.co/corporate-event-guide-thailand.html — The Executive Guide to Corporate Events in Thailand (Venues, TCEB Grants, Riders)
+- https://thaievent.co/faq.html — Corporate Event FAQ (Budgets, Lead Times, Regulations, Audio-Visual)
 
 ## Agency & Contact
-- https://thaieventcollective.com/about.html — Agency Overview, Leadership & Safety Rigor
-- https://thaieventcollective.com/contact.html — Submit Corporate RFP / Book 30-Min Consultation
+- https://thaievent.co/about.html — Agency Overview, Leadership & Safety Rigor
+- https://thaievent.co/contact.html — Submit Corporate RFP / Book 30-Min Consultation
 
 ## Sister Company
 - Thai Decor Collective: https://thaidecor.co/ (Luxury Floral & Spatial Styling)
@@ -40,8 +40,8 @@ Generated Date: 2026-11-19
 - Consultation Booking: https://calendly.com/team-thaidecor/30min
 
 ## Sitemaps
-- Main Sitemap: https://thaieventcollective.com/sitemap.xml
-- Image Sitemap: https://thaieventcollective.com/image-sitemap.xml
+- Main Sitemap: https://thaievent.co/sitemap.xml
+- Image Sitemap: https://thaievent.co/image-sitemap.xml
 
 ## Last Updated
 2026-11-19

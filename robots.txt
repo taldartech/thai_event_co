@@ -1,4 +1,4 @@
-# Robots.txt for Thai Event Collective (https://thaieventcollective.com)
+# Robots.txt for Thai Event Collective (https://thaievent.co)
 User-agent: *
 Allow: /
 
@@ -27,5 +27,5 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-Sitemap: https://thaieventcollective.com/sitemap.xml
-Sitemap: https://thaieventcollective.com/image-sitemap.xml
+Sitemap: https://thaievent.co/sitemap.xml
+Sitemap: https://thaievent.co/image-sitemap.xml
